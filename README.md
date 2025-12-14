@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lighthouse Ops 🚨
+
+**Autonomous Operations Platform** - Illuminate issues. Automate solutions.
+
+Lighthouse Ops is an intelligent incident response and operations automation platform that combines AI-powered decision making with parallel task execution. Built with Next.js and integrated with Kestra workflow orchestration.
+
+## Features
+
+- 🧠 **Intelligent Intent Parsing** - Automatically understands and classifies operational commands
+- 🔄 **Parallel Execution** - Handles DevOps and administrative tasks simultaneously
+- 🛠️ **DevOps Integration** - Auto-scales Kubernetes clusters and diagnoses infrastructure issues
+- 📝 **Notion Integration** - Creates and updates incident reports automatically
+- ⚡ **Real-time UI** - Live status updates and execution logs
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the platform in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+lighthouse-ops/
+├── app/                    # Next.js 14 App Router
+│   ├── api/trigger/       # API endpoint for Kestra integration
+│   └── page.tsx           # Main UI
+├── agents/                # AI agent logic
+│   ├── planner.py         # Task planning agent
+│   ├── decision_log.py    # Decision logging
+│   └── tools.py           # Agent tools
+├── workflow/              # Kestra workflow definitions
+└── docs/                  # Architecture documentation
+```
+
+## Configuration
+
+The platform requires a Kestra instance running on `http://localhost:8080`. Update the webhook URL in `app/api/trigger/route.ts` if using a different configuration.
+
+## Deployment
+
+### Deploy on Vercel
+
+The easiest way to deploy is using the [Vercel Platform](https://vercel.com/new):
+
+1. Push your code to GitHub
+2. Import your repository in Vercel
+3. Configure environment variables if needed
+4. Deploy
+
+### Deploy with Docker
+
+```bash
+docker build -t lighthouse-ops .
+docker run -p 3000:3000 lighthouse-ops
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Kestra Documentation](https://kestra.io/docs)
